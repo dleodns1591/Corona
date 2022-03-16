@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
 {
@@ -9,11 +10,20 @@ public class Player_Move : MonoBehaviour
     public float Jump_Power = 10;
     private float Y_Velocity;
 
+    [SerializeField]
+    private Slider Hader;
+
+    private float Max_Hp = 100;
+    private float Cur_Hp = 100;
+    public Text Hp_Text;
+
     CharacterController CC;
 
     void Start()
     {
         CC = GetComponent<CharacterController>();
+
+        Hader.value = (float)Cur_Hp / (float)Max_Hp;
     }
 
     void Update()
@@ -49,5 +59,23 @@ public class Player_Move : MonoBehaviour
         // Move 움직이전에 충돌 체크를 해준다. 만약 충돌하면 멈춘다.
         CC.Move(dir * Speed * Time.deltaTime);
     }
+
+    private void Handle_Hp()
+    {
+        Hader.value = (float)Cur_Hp / (float)Max_Hp;
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Invoke("Handle_Hp", 0.01f);
+            Cur_Hp -= 10;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+        }
+    }
+
+
 
 }
