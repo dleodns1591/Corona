@@ -18,7 +18,6 @@ public class Spawn_Enemy : MonoBehaviour
 
     private void Spawn()
     {
-        Vector3 Player_Position = GameObject.FindWithTag("Character").transform.position;
         float Random_Z = Random.Range(500f, 629f);
         float Random_Y = Random.Range(70f, 130f);
         float Random_X = Random.Range(450f, 650f);

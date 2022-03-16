@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     public GameObject Bullet_Prefab;
 
-    private float Time_Left = 0.1f;
+    private float Time_Left = 0.2f;
     private float Next_Time = 0.0f;
 
     void Start()

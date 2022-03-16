@@ -11,7 +11,7 @@ public class Enemy_Move : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -22,5 +22,14 @@ public class Enemy_Move : MonoBehaviour
     public void MoveTo(Vector3 direction)
     {
         Move_Direction = direction;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        // ÃÑ¾ËÇÑÅ× ´ê¾ÒÀ» °æ¿ì
+        if (other.CompareTag("Bullet") || other.CompareTag("Player") || other.CompareTag("Destroy_Wall"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

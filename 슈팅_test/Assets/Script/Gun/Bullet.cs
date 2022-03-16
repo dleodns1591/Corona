@@ -30,9 +30,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Bullet>() == null)
+        if (other.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
