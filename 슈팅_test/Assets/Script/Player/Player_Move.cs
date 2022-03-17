@@ -11,7 +11,7 @@ public class Player_Move : MonoBehaviour
     private float Y_Velocity;
 
     [SerializeField]
-    private Slider Hader;
+    private Slider HP_Hader;
 
     private float Max_Hp = 100;
     private float Cur_Hp = 100;
@@ -23,7 +23,7 @@ public class Player_Move : MonoBehaviour
     {
         CC = GetComponent<CharacterController>();
 
-        Hader.value = (float)Cur_Hp / (float)Max_Hp;
+        HP_Hader.value = (float)Cur_Hp / (float)Max_Hp;
     }
 
     void Update()
@@ -62,8 +62,7 @@ public class Player_Move : MonoBehaviour
 
     private void Handle_Hp()
     {
-        Hader.value = (float)Cur_Hp / (float)Max_Hp;
-
+        HP_Hader.value = (float)Cur_Hp / (float)Max_Hp;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,7 +74,6 @@ public class Player_Move : MonoBehaviour
             Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
         }
     }
-
 
 
 }

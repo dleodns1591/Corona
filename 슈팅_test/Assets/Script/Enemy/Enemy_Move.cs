@@ -9,6 +9,9 @@ public class Enemy_Move : MonoBehaviour
     [SerializeField]
     public Vector3 Move_Direction = Vector3.zero;
 
+    public float Damage = 2f;
+    public float Hp = 3f;
+
     void Start()
     {
 
@@ -26,7 +29,7 @@ public class Enemy_Move : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        // 총알한테 닿았을 경우
+        // 총알 / 플레이어 / 벽 에 닿았을 경우 오브젝트가 삭제된다.
         if (other.CompareTag("Bullet") || other.CompareTag("Player") || other.CompareTag("Destroy_Wall"))
         {
             Destroy(this.gameObject);
