@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_Move : MonoBehaviour
 {
@@ -12,9 +13,14 @@ public class Enemy_Move : MonoBehaviour
     public float Damage = 2f;
     public float Hp = 3f;
 
+    Renderer Enemy_HitColor;
+
+    public Material Mid_Material;
+    public Material TopBottom_Material;
+
     void Start()
     {
-
+        Enemy_HitColor = gameObject.GetComponent<Renderer>();
     }
 
     void Update()
@@ -30,9 +36,15 @@ public class Enemy_Move : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         // 총알 / 플레이어 / 벽 에 닿았을 경우 오브젝트가 삭제된다.
-        if (other.CompareTag("Bullet") || other.CompareTag("Player") || other.CompareTag("Destroy_Wall"))
+        if (other.CompareTag("Destroy_Wall"))
         {
             Destroy(this.gameObject);
         }
+
+        if (other.CompareTag("Bullet") || other.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 }

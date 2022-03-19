@@ -67,13 +67,21 @@ public class Player_Move : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Enemy_Move EM = other.GetComponent<Enemy_Move>();
         if (other.CompareTag("Enemy"))
         {
             Invoke("Handle_Hp", 0.01f);
-            Cur_Hp -= 10;
+            Cur_Hp -= EM.Damage / 2;
             Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // ¹«Àû
         }
     }
 
+    IEnumerator Invincibility()
+    {
+        this.gameObject.layer = 6;
+        yield return new WaitForSeconds(1.5f);
+        this.gameObject.layer = 0;
+    }
 
 }

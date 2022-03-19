@@ -33,7 +33,7 @@ public class Pain_Bar : MonoBehaviour
         {
             Enemy_Move EM = other.GetComponent<Enemy_Move>();
             Invoke("Handle_Pain", 0.01f);
-            Cur_Pain += EM.Damage;
+            Cur_Pain += EM.Damage / 2;
             Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
         }
     }
