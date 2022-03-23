@@ -67,8 +67,12 @@ public class Player_Move : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Enemy_01 (박테리아) 와 닿았을 경우
+        // Enemy_02 (세균) 과 닿았을 경우
+        // Enemy_03 (바이러스) 와 닿았을 경우
+        // Enemy_04 (암세포) 와 닿았을 경우
         Enemy_Move EM = other.GetComponent<Enemy_Move>();
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy_01") || other.CompareTag("Enemy_02") || other.CompareTag("Enemy_03") || other.CompareTag("Enemy_04"))
         {
             Invoke("Handle_Hp", 0.01f);
             Cur_Hp -= EM.Damage / 2;
@@ -79,6 +83,7 @@ public class Player_Move : MonoBehaviour
 
     IEnumerator Invincibility()
     {
+        // 몬스터와 충돌 될 경우 1.5초 정도의 무적시간을 가지고 있다.
         this.gameObject.layer = 6;
         yield return new WaitForSeconds(1.5f);
         this.gameObject.layer = 0;

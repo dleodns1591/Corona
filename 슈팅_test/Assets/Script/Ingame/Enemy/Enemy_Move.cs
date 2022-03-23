@@ -5,22 +5,23 @@ using UnityEngine.UI;
 
 public class Enemy_Move : MonoBehaviour
 {
+    [Header("이동 속도")]
     [SerializeField]
     public float Move_Speed = 0.0f;
+
+    [Header("이동 방향")]
     [SerializeField]
     public Vector3 Move_Direction = Vector3.zero;
 
-    public float Damage = 2f;
-    public float Hp = 3f;
+    [Header("공격력")]
+    public float Damage = 0f;
 
-    Renderer Enemy_HitColor;
-
-    public Material Mid_Material;
-    public Material TopBottom_Material;
+    [Header("체력")]
+    public float Hp = 0f;
 
     void Start()
     {
-        Enemy_HitColor = gameObject.GetComponent<Renderer>();
+
     }
 
     void Update()
