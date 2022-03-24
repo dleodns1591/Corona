@@ -13,7 +13,7 @@ public class Enemy_Bullet : MonoBehaviour
     private void Start()
     {
         // 현재 오브젝트는 5초후 삭제된다.
-        Destroy(this.gameObject, 5f);
+        Destroy(this.gameObject, 10f);
     }
 
     private void Update()

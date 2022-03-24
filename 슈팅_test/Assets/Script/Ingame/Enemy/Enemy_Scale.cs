@@ -21,15 +21,15 @@ public class Enemy_Scale : MonoBehaviour
     {
         if (time <= Up_SizeTime)
         {
-            transform.localScale = new Vector3(10,10,10) * (1 + Size * time);
+            transform.localScale = new Vector3(2, 2, 2) * (1 + Size * time);
         }
         else if (time <= Up_SizeTime * 2)
         {
-            transform.localScale = new Vector3(10,10,10) * (2 * Size * Up_SizeTime + 1 - time * Size);
+            transform.localScale = new Vector3(2, 2, 2) * (2 * Size * Up_SizeTime + 1 - time * Size);
         }
         else
         {
-            transform.localScale = new Vector3(10,10,10);
+            transform.localScale = new Vector3(2, 2, 2);
             ResetAnim();
         }
         time += Time.deltaTime;

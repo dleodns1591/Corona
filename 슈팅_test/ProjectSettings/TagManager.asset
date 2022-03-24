@@ -13,6 +13,9 @@ TagManager:
   - Enemy_02
   - Enemy_03
   - Enemy_04
+  - Enemy_Bullet
+  - Fire
+  - Smoke_Particle
   layers:
   - Default
   - TransparentFX
@@ -22,7 +25,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Wall
   - 
   - 
   - 

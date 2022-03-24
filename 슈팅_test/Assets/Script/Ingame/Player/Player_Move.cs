@@ -79,6 +79,26 @@ public class Player_Move : MonoBehaviour
             Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
             StartCoroutine(Invincibility()); // 무적
         }
+
+        // 파티클과 닿았을 경우
+        if (other.CompareTag("Smoke_Particle"))
+        {
+            Enemy_Particle EP = other.GetComponent<Enemy_Particle>();
+            Invoke("Handle_Hp", 0.01f);
+            Cur_Hp -= EP.Damage;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // 무적
+        }
+
+        // 몬스터 총알 과 닿았을 경우
+        if (other.CompareTag("Enemy_Bullet"))
+        {
+            Enemy_Bullet EB = other.GetComponent<Enemy_Bullet>();
+            Invoke("Handle_Hp", 0.01f);
+            Cur_Hp -= EB.Attack;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // 무적
+        }
     }
 
     IEnumerator Invincibility()

@@ -19,7 +19,7 @@ public class Spawn_Enemy : MonoBehaviour
     void Start()
     {
         InvokeRepeating("Enemy01_Spawn", 3f, 1.5f);
-        InvokeRepeating("Enemy02_Spawn", 10f, 8f);
+        InvokeRepeating("Enemy02_Spawn", 10f, 2f);
     }
 
     void Update()
