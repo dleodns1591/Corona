@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public float Speed = 1f;
 
     [Header("°ø°Ý·Â")]
-    public float Attack = 3f;
+    public float Attack = 1f;
     bool isFire;
     Vector3 Direction;
 
@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy_01") || other.CompareTag("Enemy_02") || other.CompareTag("Enemy_03") || other.CompareTag("Enemy_04"))
         {
             Destroy(this.gameObject);
         }

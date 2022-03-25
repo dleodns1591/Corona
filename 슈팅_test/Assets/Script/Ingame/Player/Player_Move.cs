@@ -17,6 +17,7 @@ public class Player_Move : MonoBehaviour
     private float Cur_Hp = 100;
     public Text Hp_Text;
 
+    private bool Enemy_Invincibility;
     CharacterController CC;
 
     void Start()
@@ -80,16 +81,6 @@ public class Player_Move : MonoBehaviour
             StartCoroutine(Invincibility()); // 무적
         }
 
-        // 파티클과 닿았을 경우
-        if (other.CompareTag("Smoke_Particle"))
-        {
-            Enemy_Particle EP = other.GetComponent<Enemy_Particle>();
-            Invoke("Handle_Hp", 0.01f);
-            Cur_Hp -= EP.Damage;
-            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
-            StartCoroutine(Invincibility()); // 무적
-        }
-
         // 몬스터 총알 과 닿았을 경우
         if (other.CompareTag("Enemy_Bullet"))
         {
@@ -101,12 +92,26 @@ public class Player_Move : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("충돌");
+        if(other.CompareTag("Smoke_Particle") && !Enemy_Invincibility)
+        {
+            Enemy_Particle EP = other.GetComponent<Enemy_Particle>();
+            Invoke("Handle_Hp", 0.01f);
+            Cur_Hp -= EP.Damage;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // 무적
+        }
+    }
+
     IEnumerator Invincibility()
     {
         // 몬스터와 충돌 될 경우 1.5초 정도의 무적시간을 가지고 있다.
         this.gameObject.layer = 6;
+        Enemy_Invincibility = true;
         yield return new WaitForSeconds(1.5f);
         this.gameObject.layer = 0;
+        Enemy_Invincibility = false;
     }
-
 }

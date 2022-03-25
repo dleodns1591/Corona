@@ -20,9 +20,14 @@ public class Enemy_Move : MonoBehaviour
     [Header("체력")]
     public float Hp = 0f;
 
+    [Header("스코어")]
+    public float Score = 0f;
+
+    public Text Score_Text;
+
     void Start()
     {
-
+        Score_Text = GameObject.Find("Score_Text").GetComponent<Text>();
     }
 
     void Update()
@@ -37,15 +42,22 @@ public class Enemy_Move : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Bullet bullet = other.GetComponent<Bullet>();
+
         // 총알 / 플레이어 / 벽 에 닿았을 경우 오브젝트가 삭제된다.
-        if (other.CompareTag("Destroy_Wall"))
+        if (other.CompareTag("Destroy_Wall") || other.CompareTag("Player"))
         {
             Destroy(this.gameObject);
         }
 
-        if (other.CompareTag("Bullet") || other.CompareTag("Player"))
+        if (other.CompareTag("Bullet"))
         {
-            Destroy(this.gameObject);
+            Hp -= bullet.Attack;
+            if (Hp == 0)
+            {
+                Destroy(this.gameObject);
+                Score_Text.text = "Score : " + Score;
+            }
         }
 
     }

@@ -811,7 +811,8 @@ MonoBehaviour:
   Move_Direction: {x: 0, y: 0, z: -1}
   Damage: 6
   Particle_Damage: 0
-  Hp: 10
+  Hp: 6
+  Score: 400
 --- !u!114 &7741616107083047160
 MonoBehaviour:
   m_ObjectHideFlags: 0

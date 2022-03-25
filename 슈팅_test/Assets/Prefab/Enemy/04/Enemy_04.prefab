@@ -528,7 +528,6 @@ GameObject:
   - component: {fileID: 4715273001281588187}
   - component: {fileID: 4715273001281588181}
   - component: {fileID: 4715273001281588186}
-  - component: {fileID: 4715273001281588180}
   - component: {fileID: 4715273001281588183}
   m_Layer: 7
   m_Name: Smoke_Particle
@@ -4187,7 +4186,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -4384,7 +4383,7 @@ ParticleSystem:
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 0}
-      type: 3
+      type: 1
       properties: 0
       emitProbability: 1
   LightsModule:
@@ -5382,19 +5381,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!135 &4715273001281588180
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4715273001281588184}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8.876719
-  m_Center: {x: -0.4800002, y: -0.82000035, z: 1.8472366}
 --- !u!114 &4715273001281588183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5473,6 +5459,7 @@ MonoBehaviour:
   Damage: 10
   Particle_Damage: 10
   Hp: 50
+  Score: 500
 --- !u!114 &4715273001435888345
 MonoBehaviour:
   m_ObjectHideFlags: 0

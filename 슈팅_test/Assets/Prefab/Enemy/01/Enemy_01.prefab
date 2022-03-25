@@ -338,7 +338,10 @@ MonoBehaviour:
   Move_Speed: 100
   Move_Direction: {x: 0, y: 0, z: -1}
   Damage: 2
+  Particle_Damage: 0
   Hp: 3
+  Score: 100
+  Score_Text: {fileID: 0}
 --- !u!136 &5267990834926566902
 CapsuleCollider:
   m_ObjectHideFlags: 0
