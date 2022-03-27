@@ -16,6 +16,17 @@ TagManager:
   - Enemy_Bullet
   - Fire
   - Smoke_Particle
+  - UI
+  - Item_01
+  - Item_02
+  - Item_03
+  - Item_04
+  - Item_05
+  - Item_06
+  - Red_Cell
+  - Shild
+  - Item_04(false)
+  - Boss_Wall
   layers:
   - Default
   - TransparentFX

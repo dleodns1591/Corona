@@ -5,15 +5,17 @@ using UnityEngine;
 public class Enemy_Bullet : MonoBehaviour
 {
     [Header("이동 속도")]
-    public float Speed = 1f;
+    public float Speed = 0f;
 
     [Header("공격력")]
-    public float Attack = 6f;
+    public float Attack = 0f;
+
+    [Header("지워지는 속도")]
+    public float Time_Speed = 0f;
 
     private void Start()
     {
-        // 현재 오브젝트는 5초후 삭제된다.
-        Destroy(this.gameObject, 10f);
+        Destroy(this.gameObject, Time_Speed);
     }
 
     private void Update()

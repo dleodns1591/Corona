@@ -8,7 +8,7 @@ public class MoveMent : MonoBehaviour
     public float MoveSpeed = 0.0f;
     void Start()
     {
-        
+        Destroy(this.gameObject, 5f);
     }
 
     void Update()

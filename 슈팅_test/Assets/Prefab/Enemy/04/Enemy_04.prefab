@@ -5459,7 +5459,7 @@ MonoBehaviour:
   Damage: 10
   Particle_Damage: 10
   Hp: 50
-  Score: 500
+  Score: 400
 --- !u!114 &4715273001435888345
 MonoBehaviour:
   m_ObjectHideFlags: 0

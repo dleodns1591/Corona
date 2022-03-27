@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Move_Direction: {x: 0, y: 0, z: -1}
-  MoveSpeed: 50
+  MoveSpeed: 150

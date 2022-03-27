@@ -5,17 +5,25 @@ using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
 {
+    [Header("이동 속도")]
     public float Speed = 5;
+
+    [Header("점프")]
     public float Gravity = -9.81f;
     public float Jump_Power = 10;
     private float Y_Velocity;
 
+    [Header("체력 슬라이더")]
     [SerializeField]
     private Slider HP_Hader;
 
+    [Header("체력 UI")]
+    public Text Hp_Text;
     private float Max_Hp = 100;
     private float Cur_Hp = 100;
-    public Text Hp_Text;
+
+    private float Attack_Upgrade = 0;
+    private bool MY_Speed = true;
 
     private bool Enemy_Invincibility;
     CharacterController CC;
@@ -25,6 +33,7 @@ public class Player_Move : MonoBehaviour
         CC = GetComponent<CharacterController>();
 
         HP_Hader.value = (float)Cur_Hp / (float)Max_Hp;
+
     }
 
     void Update()
@@ -90,12 +99,68 @@ public class Player_Move : MonoBehaviour
             Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
             StartCoroutine(Invincibility()); // 무적
         }
+
+        // 아이템 01 ( 공격 업그레이드  아이템 ) 과 닿았을 경우
+        if (other.CompareTag("Item_01"))
+        {
+            StartCoroutine("Attack_UpGrade");
+            Destroy(other.gameObject);
+        }
+
+        // 아이템 02 ( 무적 아이템 ) 과  닿았을 경우
+        if (other.CompareTag("Item_02"))
+        {
+            StartCoroutine("Invincibility_Item");
+            Destroy(other.gameObject);
+        }
+
+        // 아이템 03 ( HP 회복 아이템 ) 과  닿았을 경우
+        if (other.CompareTag("Item_03"))
+        {
+            if (Cur_Hp == 100)
+            {
+                Destroy(other.gameObject);
+            }
+
+            else if (Cur_Hp <= 99 && Cur_Hp >= 90)
+            {
+                Invoke("Handle_Hp", 0.01f);
+                Cur_Hp = 100;
+                Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            }
+
+            else
+            {
+                Invoke("Handle_Hp", 0.01f);
+                Cur_Hp += 10;
+                Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            }
+        }
+
+        // 아이템 04 ( 고통데미지 감소 아이템 ) 과  닿았을 경우
+        if (other.CompareTag("Item_04"))
+        {
+            other.gameObject.tag = "Item_04(false)";
+            GameObject.Find("PainDown_Item").SetActive(false);
+        }
+
+        // 아이템 05 ( 몬스터들의 이동속도 감소 아이템 ) 과  닿았을 경우
+        if (other.CompareTag("Item_05"))
+        {
+            StartCoroutine("SpeedDown_Itme");
+        }
+
+        // 아이템 06 ( 이동속도 2배 아이템 ) 과  닿았을 경우
+        if (other.CompareTag("Item_06"))
+        {
+            StartCoroutine("MySpeedUP_Item");
+        }
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("충돌");
-        if(other.CompareTag("Smoke_Particle") && !Enemy_Invincibility)
+        // Enemy_04 ( 4번째 몬스터인 파티클 공격 ) 에 닿았을 때
+        if (other.CompareTag("Smoke_Particle") && !Enemy_Invincibility)
         {
             Enemy_Particle EP = other.GetComponent<Enemy_Particle>();
             Invoke("Handle_Hp", 0.01f);
@@ -113,5 +178,67 @@ public class Player_Move : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         this.gameObject.layer = 0;
         Enemy_Invincibility = false;
+    }
+
+    IEnumerator Attack_UpGrade()
+    {
+        yield return
+        Attack_Upgrade += 1;
+        if (Attack_Upgrade == 1)
+        {
+            transform.GetChild(2).gameObject.SetActive(true);
+        }
+        else if (Attack_Upgrade == 2)
+        {
+            transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else if (Attack_Upgrade == 3)
+        {
+            transform.GetChild(3).gameObject.SetActive(false);
+            transform.GetChild(4).gameObject.SetActive(true);
+        }
+        else if (Attack_Upgrade >= 4)
+        {
+            transform.GetChild(4).gameObject.SetActive(false);
+            transform.GetChild(5).gameObject.SetActive(true);
+        }
+    }
+
+    IEnumerator Invincibility_Item()
+    {
+        // 3초 동안 무적시간을 갖는다.
+        this.gameObject.layer = 6;
+        Enemy_Invincibility = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        transform.GetChild(0).gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        this.gameObject.layer = 0;
+        Enemy_Invincibility = false;
+    }
+
+    IEnumerator SpeedDown_Itme()
+    {
+        // 인게임에 소환되어 있는 몬스터들만 속도 제한 된다.
+        Enemy_Move.instance.Move_Speed -= 50f;
+        yield return new WaitForSeconds(5f);
+        Enemy_Move.instance.Move_Speed += 50f;
+
+    }
+
+    IEnumerator MySpeedUP_Item()
+    {
+        if (MY_Speed)
+        {
+            Speed = 150f;
+            Jump_Power = 3f;
+            yield return new WaitForSeconds(10f);
+            Jump_Power = 5f;
+
+            Speed = 50f;
+            MY_Speed = false;
+        }
     }
 }

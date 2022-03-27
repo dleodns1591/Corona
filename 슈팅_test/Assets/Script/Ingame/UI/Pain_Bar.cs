@@ -10,7 +10,7 @@ public class Pain_Bar : MonoBehaviour
     private Slider Pain_Hader;
 
     private float Max_Pain = 100;
-    private float Cur_Pain = 10;
+    public float Cur_Pain = 10;
     public Text Pain_Text;
 
     void Start()
@@ -23,13 +23,19 @@ public class Pain_Bar : MonoBehaviour
 
     }
 
-    private void Handle_Pain()
+    void Awake()
+    {
+
+    }
+
+    public void Handle_Pain()
     {
         Pain_Hader.value = (float)Cur_Pain / (float)Max_Pain;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         // Enemy_01 (박테리아) 와 닿았을 경우
         // Enemy_02 (세균) 과 닿았을 경우
         // Enemy_03 (바이러스) 와 닿았을 경우
@@ -40,6 +46,43 @@ public class Pain_Bar : MonoBehaviour
             Invoke("Handle_Pain", 0.01f);
             Cur_Pain += EM.Damage / 2;
             Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
+        }     
+        
+        if (other.CompareTag("Red_Cell"))
+        {
+            Invoke("Handle_Pain", 0.01f);
+            Cur_Pain += 10;
+            Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Item_04"))
+        {
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Item_04(false)"))
+        {
+            if (Cur_Pain >= 0 && Cur_Pain <= 5)
+            {
+                Invoke("Handle_Pain", 0.01f);
+                Cur_Pain = 0;
+                Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
+                Destroy(other.gameObject);
+            }
+
+            else if (Cur_Pain > 5)
+            {
+                Invoke("Handle_Pain", 0.01f);
+                Cur_Pain -= 5;
+                Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
+                Destroy(other.gameObject);
+            }
+        }
+
+        if (Cur_Pain >= 100)
+        {
+            Debug.Log("고통 게이지 100");
         }
     }
 }

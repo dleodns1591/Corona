@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy_Move : MonoBehaviour
 {
+    public static Enemy_Move instance;
+
     [Header("이동 속도")]
     [SerializeField]
     public float Move_Speed = 0.0f;
@@ -20,14 +22,9 @@ public class Enemy_Move : MonoBehaviour
     [Header("체력")]
     public float Hp = 0f;
 
-    [Header("스코어")]
-    public float Score = 0f;
-
-    public Text Score_Text;
-
     void Start()
     {
-        Score_Text = GameObject.Find("Score_Text").GetComponent<Text>();
+
     }
 
     void Update()
@@ -35,9 +32,12 @@ public class Enemy_Move : MonoBehaviour
         transform.position += Move_Direction * Move_Speed * Time.deltaTime;
     }
 
-    public void MoveTo(Vector3 direction)
+    private void Awake()
     {
-        Move_Direction = direction;
+        if (!instance)
+        {
+            instance = this;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -53,11 +53,35 @@ public class Enemy_Move : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Hp -= bullet.Attack;
-            if (Hp == 0)
+            if (Hp <= 0 && CompareTag("Enemy_01"))
             {
+                UI_Manager.instance.Score(100);
                 Destroy(this.gameObject);
-                Score_Text.text = "Score : " + Score;
             }
+
+            if (Hp <= 0 && CompareTag("Enemy_02"))
+            {
+                UI_Manager.instance.Score(200);
+                Destroy(this.gameObject);
+            }
+
+            if (Hp <= 0 && CompareTag("Enemy_03"))
+            {
+                UI_Manager.instance.Score(300);
+                Destroy(this.gameObject);
+            }
+
+            if (Hp <= 0 && CompareTag("Enemy_04"))
+            {
+                UI_Manager.instance.Score(400);
+                Destroy(this.gameObject);
+            }
+
+            if (Hp <= 0)
+            {
+                UI_Manager.instance.EnemyDie(1);
+            }
+
         }
 
     }
