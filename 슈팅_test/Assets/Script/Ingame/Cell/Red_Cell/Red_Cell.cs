@@ -38,11 +38,12 @@ public class Red_Cell : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy_01") || other.CompareTag("Enemy_02") || other.CompareTag("Enemy_03") || other.CompareTag("Enemy_04") || other.CompareTag("Bullet"))
+        if (other.CompareTag("Enemy_01") || other.CompareTag("Enemy_02") || other.CompareTag("Enemy_03") || other.CompareTag("Enemy_04") || other.CompareTag("Bullet") || other.CompareTag("Player"))
         {
             HP -= 10;
             if (HP <= 0)
             {
+                tag = "Red_Cell(false)";
                 transform.GetChild(0).gameObject.SetActive(false);
                 Move_Speed = 1000;
             }

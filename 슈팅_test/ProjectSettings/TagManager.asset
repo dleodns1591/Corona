@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - Enemy
   - Character
   - Destroy_Wall
   - Hero
@@ -27,6 +26,13 @@ TagManager:
   - Shild
   - Item_04(false)
   - Boss_Wall
+  - Red_Cell(false)
+  - Boss_Skill
+  - Boss_Bullet
+  - Background
+  - Transparent_Wall
+  - "\uC720\uB3C4\uD0C4"
+  - Boss_01
   layers:
   - Default
   - TransparentFX

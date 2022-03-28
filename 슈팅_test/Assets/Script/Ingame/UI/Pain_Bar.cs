@@ -46,14 +46,20 @@ public class Pain_Bar : MonoBehaviour
             Invoke("Handle_Pain", 0.01f);
             Cur_Pain += EM.Damage / 2;
             Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
-        }     
-        
-        if (other.CompareTag("Red_Cell"))
+        }
+
+        if (other.CompareTag("Red_Cell(false)"))
         {
             Invoke("Handle_Pain", 0.01f);
             Cur_Pain += 10;
             Pain_Text.text = "Pain : " + Cur_Pain + "/ 100";
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Red_Cell"))
+        {
+            Destroy(other.gameObject);
+
         }
 
         if (other.CompareTag("Item_04"))

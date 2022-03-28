@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Spawn_Enemy : MonoBehaviour
 {
@@ -11,21 +12,22 @@ public class Spawn_Enemy : MonoBehaviour
     [Header("技闭")]
     public GameObject Enemy_Prefab_02;
 
+    [Header("官捞矾胶")]
+    public GameObject Enemy_Prefab_03;
+
     [Header("归趋备")]
     public GameObject White_Blood;
 
     [Header("利趋备")]
     public GameObject Red_Blood;
 
-    [Header("焊胶_01")]
-    public GameObject Boss_01;
-
     void Start()
     {
-        InvokeRepeating("Probability_White", 1f, 10f);
-        InvokeRepeating("Probability_Red", 1f, 20f);
+        InvokeRepeating("Probability_White", 10f, 10f);
+        InvokeRepeating("Probability_Red", 15f, 25f);
         InvokeRepeating("Enemy01_Spawn", 3f, 1.5f);
-        InvokeRepeating("Enemy02_Spawn", 10f, 8);
+        InvokeRepeating("Enemy02_Spawn", 10f, 4f);
+        InvokeRepeating("Enemy03_Spawn", 1f, 6f);
     }
 
     void Update()
@@ -35,27 +37,41 @@ public class Spawn_Enemy : MonoBehaviour
 
     private void Enemy01_Spawn()
     {
-        if (UI_Manager.instance.EnemyDie_Point <= -1)
+        if (SceneManager.GetActiveScene().name == "Stage_01")
         {
-            float Random_Z = Random.Range(500f, 620f);
-            float Random_Y = Random.Range(70f, 100f);
-            float Random_X = Random.Range(500f, 620f);
-            GameObject Enemy = (GameObject)Instantiate(Enemy_Prefab_01, new Vector3(Random_X, Random_Y, Random_Z), Quaternion.identity);
+            if (UI_Manager.instance.EnemyDie_Point <= 30)
+            {
+                float Random_Z = Random.Range(500f, 620f);
+                float Random_Y = Random.Range(70f, 100f);
+                float Random_X = Random.Range(500f, 620f);
+                GameObject Enemy = (GameObject)Instantiate(Enemy_Prefab_01, new Vector3(Random_X, Random_Y, Random_Z), Quaternion.identity);
+            }
         }
     }
 
     private void Enemy02_Spawn()
     {
-        if (UI_Manager.instance.EnemyDie_Point <= -1)
+        if (SceneManager.GetActiveScene().name == "Stage_01")
         {
-            float Random_Z = Random.Range(500f, 620f);
-            float Random_X = Random.Range(500f, 620f);
-            GameObject Enemy = (GameObject)Instantiate(Enemy_Prefab_02, new Vector3(Random_X, 80f, Random_Z), Quaternion.identity);
+            if (UI_Manager.instance.EnemyDie_Point <= 30)
+            {
+                float Random_Z = Random.Range(500f, 620f);
+                float Random_X = Random.Range(500f, 620f);
+                GameObject Enemy = (GameObject)Instantiate(Enemy_Prefab_02, new Vector3(Random_X, 80f, Random_Z), Quaternion.identity);
+            }
         }
     }
 
-    public void Boss()
+    private void Enemy03_Spawn()
     {
+        if (SceneManager.GetActiveScene().name == "Stage_01")
+        {
+            if (UI_Manager.instance.EnemyDie_Point <= 30)
+            {
+                float Random_X = Random.Range(547, 724f);
+                GameObject Enemy = (GameObject)Instantiate(Enemy_Prefab_03, new Vector3(Random_X, -150f, 1418), Quaternion.identity);
+            }
+        }
     }
 
     public void White_Cell()
@@ -77,8 +93,8 @@ public class Spawn_Enemy : MonoBehaviour
         int Probability_White = Random.Range(1, 101);
         //print(Probability_White);
 
-        // 30% 犬伏肺 归趋备 积己
-        if (Probability_White <= 30)
+        // 25% 犬伏肺 归趋备 积己
+        if (Probability_White <= 25)
         {
             White_Cell();
         }
@@ -89,8 +105,8 @@ public class Spawn_Enemy : MonoBehaviour
         int Probability_Red = Random.Range(1, 101);
         //print(Probability_Red);
 
-        // 20% 犬伏肺 利趋备 积己
-        if (Probability_Red <= 20)
+        // 15% 犬伏肺 利趋备 积己
+        if (Probability_Red <= 15)
         {
             Red_Cell();
         }

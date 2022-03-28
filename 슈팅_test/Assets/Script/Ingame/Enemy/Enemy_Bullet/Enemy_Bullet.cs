@@ -10,12 +10,9 @@ public class Enemy_Bullet : MonoBehaviour
     [Header("공격력")]
     public float Attack = 0f;
 
-    [Header("지워지는 속도")]
-    public float Time_Speed = 0f;
-
     private void Start()
     {
-        Destroy(this.gameObject, Time_Speed);
+        Destroy(this.gameObject, 10f);
     }
 
     private void Update()

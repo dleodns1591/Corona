@@ -17,7 +17,6 @@ public class Enemy_Move : MonoBehaviour
 
     [Header("공격력")]
     public float Damage = 0f;
-    public float Particle_Damage = 0f;
 
     [Header("체력")]
     public float Hp = 0f;

@@ -25,10 +25,13 @@ public class UI_Manager : MonoBehaviour
 
     void Awake()
     {
-        if (!instance)
+        if (instance != null)
         {
-            instance = this;
+            Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Score(int Score)

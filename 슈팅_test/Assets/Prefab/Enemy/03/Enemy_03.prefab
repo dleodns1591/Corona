@@ -4638,7 +4638,7 @@ Transform:
   m_GameObject: {fileID: 1400445610476994234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 354.38306, y: -115.39318, z: 617.6974}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 1400445609408087681}
   - {fileID: 1400445610084312898}
@@ -4672,12 +4672,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b8b6b10e54e754aa8909cec095de2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Move_Speed: 0
+  Move_Speed: 100
   Move_Direction: {x: 0, y: 0, z: -1}
   Damage: 8
-  Particle_Damage: 0
   Hp: 15
-  Score: 300
 --- !u!114 &1400445610476994232
 MonoBehaviour:
   m_ObjectHideFlags: 0

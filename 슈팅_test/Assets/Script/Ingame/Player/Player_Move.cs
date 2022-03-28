@@ -100,6 +100,36 @@ public class Player_Move : MonoBehaviour
             StartCoroutine(Invincibility()); // 무적
         }
 
+        // 보스의 총알 과 닿았을 경우
+        if (other.CompareTag("Boss_Bullet"))
+        {
+            MoveMent MM = other.GetComponent<MoveMent>();
+            Invoke("Handle_Hp", 0.01f);
+            Cur_Hp -= MM.Attack;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // 무적
+        }
+
+        if (other.CompareTag("유도탄"))
+        {
+            Guided_Missile GM = other.GetComponent<Guided_Missile>();
+            Invoke("Handle_Hp", 0.01f);
+            //Cur_Hp -= GM.Attack;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // 무적
+            Destroy(other.gameObject);
+        }
+
+        // 보스의 스킬 과 닿았을 경우
+        if (other.CompareTag("Boss_Skill"))
+        {
+            Boss_Skill BS = other.GetComponent<Boss_Skill>();
+            Invoke("Handle_Hp", 0.01f);
+            Cur_Hp -= BS.Attack;
+            Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
+            StartCoroutine(Invincibility()); // 무적
+        }
+
         // 아이템 01 ( 공격 업그레이드  아이템 ) 과 닿았을 경우
         if (other.CompareTag("Item_01"))
         {
