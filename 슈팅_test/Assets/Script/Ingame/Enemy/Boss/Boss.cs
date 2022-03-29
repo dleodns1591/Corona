@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class Boss : MonoBehaviour
 {
+    public static Boss instance;
+
     [Header("이동 속도")]
     public float Speed = 0f;
 
@@ -29,22 +32,32 @@ public class Boss : MonoBehaviour
     [Header("보스 충돌 체크")]
     public bool BossHP_Check = true;
 
+    public PlayableDirector Boss_Check;
+    public bool BossMove_Check = true;
+    public bool All_Enemy_Check = true;
+    public GameObject UI_Canvas;
+
     void Start()
     {
+        Boss_Check.Stop();
+
+        BossMove_Check = true;
         BossHP_Check = true;
+        All_Enemy_Check = true;
         Speed = 0f;
         HP_Slider.value = (float)Cur_Hp / (float)Max_Hp;
     }
 
     void Update()
     {
-
         Skill_Stop();
-        if (UI_Manager.instance.EnemyDie_Point >= 0)
-        {
-            Vector3 velo = Vector3.zero;
-            transform.position = Vector3.Lerp(transform.position, Target, 0.005f);
-        }
+        Boss_Move();
+        Boss_Move_02();
+    }
+
+    private void Awake()
+    {
+        Boss.instance = this;
     }
 
     public void Handle_Hp()
@@ -59,9 +72,9 @@ public class Boss : MonoBehaviour
 
         if (other.CompareTag("Boss_Wall"))
         {
+
             Debug.Log("벽과 닿음");
             Speed = 0f;
-            transform.GetChild(6).gameObject.SetActive(true);
             BossHP_Check = false;
             Skill_Start();
         }
@@ -178,6 +191,30 @@ public class Boss : MonoBehaviour
             StartCoroutine("Skill_01");
             StartCoroutine("Skill_02");
             StartCoroutine("Skill_03");
+        }
+    }
+
+    private void Boss_Move()
+    {
+        if (UI_Manager.instance.EnemyDie_Point >= 30)
+        {
+            Vector3 velo = Vector3.zero;
+            transform.position = Vector3.Lerp(transform.position, Target, 0.005f);
+
+            if (BossMove_Check)
+            {
+                Boss_Check.Play();
+            }
+        }
+    }
+
+    private void Boss_Move_02()
+    {
+        if (!BossMove_Check)
+        {
+            Boss_Check.Stop();
+            transform.GetChild(6).gameObject.SetActive(true);
+            UI_Canvas.SetActive(true);
         }
     }
 }

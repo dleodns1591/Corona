@@ -39,7 +39,7 @@ public class Spawn_Enemy : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Stage_01")
         {
-            if (UI_Manager.instance.EnemyDie_Point <= 30)
+            if (UI_Manager.instance.EnemyDie_Point <= 30 && Boss.instance.All_Enemy_Check == true)
             {
                 float Random_Z = Random.Range(500f, 620f);
                 float Random_Y = Random.Range(70f, 100f);
@@ -53,7 +53,7 @@ public class Spawn_Enemy : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Stage_01")
         {
-            if (UI_Manager.instance.EnemyDie_Point <= 30)
+            if (UI_Manager.instance.EnemyDie_Point <= 30 && Boss.instance.All_Enemy_Check == true)
             {
                 float Random_Z = Random.Range(500f, 620f);
                 float Random_X = Random.Range(500f, 620f);
@@ -64,9 +64,9 @@ public class Spawn_Enemy : MonoBehaviour
 
     private void Enemy03_Spawn()
     {
-        if (SceneManager.GetActiveScene().name == "Stage_01")
+        if (SceneManager.GetActiveScene().name == "Stage_02")
         {
-            if (UI_Manager.instance.EnemyDie_Point <= 30)
+            if (UI_Manager.instance.EnemyDie_Point <= 30 && Boss.instance.All_Enemy_Check == true)
             {
                 float Random_X = Random.Range(547, 724f);
                 GameObject Enemy = (GameObject)Instantiate(Enemy_Prefab_03, new Vector3(Random_X, -150f, 1418), Quaternion.identity);
@@ -83,9 +83,12 @@ public class Spawn_Enemy : MonoBehaviour
 
     public void Red_Cell()
     {
-        float Random_Z = Random.Range(500f, 620f);
-        float Random_X = Random.Range(460f, 630f);
-        GameObject Enemy = (GameObject)Instantiate(Red_Blood, new Vector3(Random_X, 56f, Random_Z), Quaternion.identity);
+        if (UI_Manager.instance.EnemyDie_Point <= 30 && Boss.instance.All_Enemy_Check == true)
+        {
+            float Random_Z = Random.Range(500f, 620f);
+            float Random_X = Random.Range(460f, 630f);
+            GameObject Enemy = (GameObject)Instantiate(Red_Blood, new Vector3(Random_X, 56f, Random_Z), Quaternion.identity);
+        }
     }
 
     public void Probability_White()

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
 {
+    public static Player_Move instance;
+
     [Header("이동 속도")]
     public float Speed = 5;
 
@@ -25,19 +27,32 @@ public class Player_Move : MonoBehaviour
     private float Attack_Upgrade = 0;
     private bool MY_Speed = true;
 
+    public bool Player_Boss = true;
+
     private bool Enemy_Invincibility;
     CharacterController CC;
 
     void Start()
     {
+        Player_Boss = true;
         CC = GetComponent<CharacterController>();
 
         HP_Hader.value = (float)Cur_Hp / (float)Max_Hp;
 
     }
 
+
     void Update()
     {
+        if (Player_Boss)
+        {
+            this.gameObject.layer = 0;
+        }
+        else if(!Player_Boss)
+        {
+            this.gameObject.layer = 6;
+        }
+
         // 점프
         // Y 속도에 중력을 계속 더한다.
         Y_Velocity += Gravity * Time.deltaTime;
@@ -70,10 +85,11 @@ public class Player_Move : MonoBehaviour
         CC.Move(dir * Speed * Time.deltaTime);
     }
 
-    private void Handle_Hp()
+    public void Handle_Hp()
     {
         HP_Hader.value = (float)Cur_Hp / (float)Max_Hp;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

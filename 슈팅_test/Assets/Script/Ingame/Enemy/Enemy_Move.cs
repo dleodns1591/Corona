@@ -21,9 +21,11 @@ public class Enemy_Move : MonoBehaviour
     [Header("Ã¼·Â")]
     public float Hp = 0f;
 
+    private bool Enemy_Die = true;
+
     void Start()
     {
-
+        Enemy_Die = true;
     }
 
     void Update()
@@ -52,32 +54,36 @@ public class Enemy_Move : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Hp -= bullet.Attack;
-            if (Hp <= 0 && CompareTag("Enemy_01"))
+            if (Hp <= 0 && CompareTag("Enemy_01") && Enemy_Die)
             {
+                Enemy_Die = false;
+                Destroy(this.gameObject);
                 UI_Manager.instance.Score(100);
-                Destroy(this.gameObject);
+                Debug.Log("Enemy_01 Á×Àº È½¼ö");
+                UI_Manager.instance.EnemyDie(1);
             }
 
-            if (Hp <= 0 && CompareTag("Enemy_02"))
+            else if (Hp <= 0 && CompareTag("Enemy_02") && Enemy_Die)
             {
+                Destroy(this.gameObject);
                 UI_Manager.instance.Score(200);
-                Destroy(this.gameObject);
+                Debug.Log("Enemy_02 Á×Àº È½¼ö");
+                UI_Manager.instance.EnemyDie(1);
             }
 
-            if (Hp <= 0 && CompareTag("Enemy_03"))
+            else if (Hp <= 0 && CompareTag("Enemy_03") && Enemy_Die)
             {
+                Destroy(this.gameObject);
                 UI_Manager.instance.Score(300);
-                Destroy(this.gameObject);
+                Debug.Log("Enemy_03 Á×Àº È½¼ö");
+                UI_Manager.instance.EnemyDie(1);
             }
 
-            if (Hp <= 0 && CompareTag("Enemy_04"))
+            else if (Hp <= 0 && CompareTag("Enemy_04") && Enemy_Die)
             {
+                Destroy(this.gameObject);
                 UI_Manager.instance.Score(400);
-                Destroy(this.gameObject);
-            }
-
-            if (Hp <= 0)
-            {
+                Debug.Log("Enemy_04 Á×Àº È½¼ö");
                 UI_Manager.instance.EnemyDie(1);
             }
 

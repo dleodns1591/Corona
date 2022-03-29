@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 81060248786584589}
   - component: {fileID: 81060248786584588}
   - component: {fileID: 81060248786584584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss_Bullet
   m_TagString: Boss_Bullet
   m_Icon: {fileID: 0}
