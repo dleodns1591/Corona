@@ -28,5 +28,10 @@ public class BackGround : MonoBehaviour
         {
             transform.position = Target.position + Vector3.forward * 1000;
         }
+
+        if (Boss.instance.Cur_Hp <= 0)
+        {
+            Move_Speed = 0f;
+        }
     }
 }

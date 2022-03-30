@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3227363115560801591}
   - component: {fileID: 3227363115560801577}
   - component: {fileID: 3227363115560801576}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3227363115633764339}
   - component: {fileID: 3227363115633764341}
   - component: {fileID: 3227363115633764340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 3227363115812162290}
   - component: {fileID: 3227363115812162292}
   - component: {fileID: 3227363115812162291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 3227363115917311200}
   - component: {fileID: 3227363115917311202}
   - component: {fileID: 3227363115917311201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 3227363115930105631}
   - component: {fileID: 3227363115930105617}
   - component: {fileID: 3227363115930105616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 3227363115932679334}
   - component: {fileID: 3227363115932679320}
   - component: {fileID: 3227363115932679335}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 3227363115947036462}
   - component: {fileID: 3227363115947036448}
   - component: {fileID: 3227363115947036463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 3227363115954259556}
   - component: {fileID: 3227363115954259558}
   - component: {fileID: 3227363115954259557}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 3227363116057372370}
   - component: {fileID: 3227363116057372372}
   - component: {fileID: 3227363116057372371}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 3227363116096876741}
   - component: {fileID: 3227363116096876743}
   - component: {fileID: 3227363116096876742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3227363116097416375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thorn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 3227363116145640596}
   - component: {fileID: 3227363116145640598}
   - component: {fileID: 3227363116145640597}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 3227363116146827171}
   - component: {fileID: 3227363116146827173}
   - component: {fileID: 3227363116146827172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1031,7 +1031,7 @@ GameObject:
   - component: {fileID: 3227363116149906643}
   - component: {fileID: 3227363116149906645}
   - component: {fileID: 3227363116149906644}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 3227363116175217952}
   - component: {fileID: 3227363116175217954}
   - component: {fileID: 3227363116175217953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 3227363116237273931}
   - component: {fileID: 3227363116237273933}
   - component: {fileID: 3227363116237273932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 3227363116310356524}
   - component: {fileID: 3227363116310356526}
   - component: {fileID: 3227363116310356525}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 3227363116359328787}
   - component: {fileID: 3227363116359328789}
   - component: {fileID: 3227363116359328788}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 3227363116465537782}
   - component: {fileID: 3227363116465537768}
   - component: {fileID: 3227363116465537783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 3227363116520245161}
   - component: {fileID: 3227363116520245163}
   - component: {fileID: 3227363116520245162}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1598,7 +1598,7 @@ GameObject:
   - component: {fileID: 3227363116541506974}
   - component: {fileID: 3227363116541506960}
   - component: {fileID: 3227363116541506975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,7 +1679,7 @@ GameObject:
   - component: {fileID: 3227363116562877330}
   - component: {fileID: 3227363116562877332}
   - component: {fileID: 3227363116562877331}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1760,7 @@ GameObject:
   - component: {fileID: 3227363116680783628}
   - component: {fileID: 3227363116680783630}
   - component: {fileID: 3227363116680783629}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 3227363116779024009}
   - component: {fileID: 3227363116779024011}
   - component: {fileID: 3227363116779024010}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1922,7 +1922,7 @@ GameObject:
   - component: {fileID: 3227363116945381569}
   - component: {fileID: 3227363116945381571}
   - component: {fileID: 3227363116945381570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3227363116998375142}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,7 +2051,7 @@ GameObject:
   - component: {fileID: 3227363117045436626}
   - component: {fileID: 3227363117045436628}
   - component: {fileID: 3227363117045436627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2132,7 +2132,7 @@ GameObject:
   - component: {fileID: 3227363117061817626}
   - component: {fileID: 3227363117061817628}
   - component: {fileID: 3227363117061817627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2213,7 +2213,7 @@ GameObject:
   - component: {fileID: 3227363117243692140}
   - component: {fileID: 3227363117243692142}
   - component: {fileID: 3227363117243692141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2294,7 +2294,7 @@ GameObject:
   - component: {fileID: 3227363117255749039}
   - component: {fileID: 3227363117255749025}
   - component: {fileID: 3227363117255749024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2375,7 +2375,7 @@ GameObject:
   - component: {fileID: 3227363117352510693}
   - component: {fileID: 3227363117352510695}
   - component: {fileID: 3227363117352510694}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2456,7 +2456,7 @@ GameObject:
   - component: {fileID: 3227363117419166985}
   - component: {fileID: 3227363117419166987}
   - component: {fileID: 3227363117419166986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2537,7 +2537,7 @@ GameObject:
   - component: {fileID: 3227363117468786171}
   - component: {fileID: 3227363117468786173}
   - component: {fileID: 3227363117468786172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2618,7 +2618,7 @@ GameObject:
   - component: {fileID: 3227363117471791352}
   - component: {fileID: 3227363117471791354}
   - component: {fileID: 3227363117471791353}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2699,7 +2699,7 @@ GameObject:
   - component: {fileID: 3227363117474683446}
   - component: {fileID: 3227363117474683432}
   - component: {fileID: 3227363117474683447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2780,7 +2780,7 @@ GameObject:
   - component: {fileID: 3227363117591326235}
   - component: {fileID: 3227363117591326237}
   - component: {fileID: 3227363117591326236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2861,7 +2861,7 @@ GameObject:
   - component: {fileID: 3227363117614620030}
   - component: {fileID: 3227363117614620016}
   - component: {fileID: 3227363117614620031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2942,7 +2942,7 @@ GameObject:
   - component: {fileID: 3227363117674297216}
   - component: {fileID: 3227363117674297218}
   - component: {fileID: 3227363117674297217}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: thorn (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3025,7 +3025,7 @@ GameObject:
   - component: {fileID: 5531732211869431673}
   - component: {fileID: 5531732211873777433}
   - component: {fileID: 5531732211871689146}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss_Skill_02
   m_TagString: Boss_Skill
   m_Icon: {fileID: 0}

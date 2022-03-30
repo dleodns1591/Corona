@@ -24,12 +24,16 @@ public class Player_Move : MonoBehaviour
     private float Max_Hp = 100;
     private float Cur_Hp = 100;
 
+    // 공격 업그레이드 아이템을 먹었을 시 값이 올라간다.
     private float Attack_Upgrade = 0;
+    // 무적 아이템을 관리한 변수를 만들어준다.
+    private bool Enemy_Invincibility;
+    // 플레이어 이동속도 2배 아이템을 관리할 변수를 만들어준다.
     private bool MY_Speed = true;
 
+    // 보스움직임 시네머신이 돌아가고 있을 때 공격을 맞지 않게 하기 위하여 변수를 만들어준다.
     public bool Player_Boss = true;
 
-    private bool Enemy_Invincibility;
     CharacterController CC;
 
     void Start()
@@ -46,10 +50,18 @@ public class Player_Move : MonoBehaviour
     {
         if (Player_Boss)
         {
+            // 보스의 시네마신이 시작하기 전
             this.gameObject.layer = 0;
         }
         else if(!Player_Boss)
         {
+            // 보스의 시네마신이 진행되고 있을 때
+            this.gameObject.layer = 6;
+        }
+
+        if (Boss.instance.Cur_Hp <= 0)
+        {
+            // 보스의 HP가 0 이하 일 때 플레이어와 모든 충돌을 꺼준다.
             this.gameObject.layer = 6;
         }
 

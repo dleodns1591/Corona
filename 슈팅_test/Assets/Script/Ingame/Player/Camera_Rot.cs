@@ -15,10 +15,11 @@ public class Camera_Rot : MonoBehaviour
 
     void Update()
     {
+        Boss_Die();
+
         // 1. 마우스 입력 값을 이용한다.
         float mx = Input.GetAxis("Mouse X"); // 게임창에서 마우스를 왼쪽 오른쪽으로 이동할때 마다 ( 왼 -음수 : 오른 +양수 )
         float my = Input.GetAxis("Mouse Y"); // 게임창에서 마우스를 왼쪽 오른쪽으로 이동할때 마다 ( 아래 -음수 : 위 +양수 )
-
         rx += Rot_Speed * my * Time.deltaTime;
         ry += Rot_Speed * mx * Time.deltaTime;
 
@@ -32,6 +33,14 @@ public class Camera_Rot : MonoBehaviour
         transform.eulerAngles = new Vector3(-rx, ry, 0);
         // X축의 회전은 양수가 증가되면, 아래, 음수가 증가되면 위로 돌아간다. ( 그래서 X축에 -를 넣었다. )
 
+    }
+
+    private void Boss_Die()
+    {
+        if (Boss.instance.Cur_Hp <= 0)
+        {
+            Rot_Speed = 0f;
+        }
     }
 
 }

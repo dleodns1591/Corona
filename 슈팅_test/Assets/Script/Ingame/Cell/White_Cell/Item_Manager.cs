@@ -37,48 +37,10 @@ public class Item_Manager : MonoBehaviour
             if (RI)
             {
                 RI = false;
-                int Random_Item = Random.Range(1,7);
-                if (Random_Item == 1)
-                {
-                    Debug.Log("1¹ø »ÌÈû");
-                    this.gameObject.tag = "Item_01";
-                    transform.GetChild(1).gameObject.SetActive(true);
-                }
-
-                else if (Random_Item == 2)
-                {
-                    Debug.Log("2¹ø »ÌÈû");
-                    this.gameObject.tag = "Item_02";
-                    transform.GetChild(2).gameObject.SetActive(true);
-                }
-
-                else if (Random_Item == 3)
-                {
-                    this.gameObject.tag = "Item_03";
-                    Debug.Log("3¹ø »ÌÈû");
-                    transform.GetChild(3).gameObject.SetActive(true);
-                }
-
-                else if (Random_Item == 4)
-                {
-                    this.gameObject.tag = "Item_04";
-                    Debug.Log("4¹ø »ÌÈû");
-                    transform.GetChild(4).gameObject.SetActive(true);
-                }
-
-                else if (Random_Item == 5)
-                {
-                    this.gameObject.tag = "Item_05";
-                    Debug.Log("5¹ø »ÌÈû");
-                    transform.GetChild(5).gameObject.SetActive(true);
-                }
-
-                else if (Random_Item == 6)
-                {
-                    this.gameObject.tag = "Item_06";
-                    Debug.Log("6¹ø »ÌÈû");
-                    transform.GetChild(6).gameObject.SetActive(true);
-                }
+                int Random_Item = Random.Range(1, 7);
+                Debug.Log($"{Random_Item}¹ø »ÌÈû");
+                this.gameObject.tag = $"Item_0{Random_Item}";
+                transform.GetChild(Random_Item).gameObject.SetActive(true);
             }
 
 

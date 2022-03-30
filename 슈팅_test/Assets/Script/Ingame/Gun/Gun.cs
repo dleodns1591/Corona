@@ -26,7 +26,6 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
-
         if (Input.GetMouseButton(0))
         {
             Vector3 Fire_Pos = transform.position + this.gameObject.transform.forward + new Vector3(0f, 0.5f, 0f);
