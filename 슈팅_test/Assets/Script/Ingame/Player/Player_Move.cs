@@ -22,7 +22,7 @@ public class Player_Move : MonoBehaviour
     [Header("체력 UI")]
     public Text Hp_Text;
     private float Max_Hp = 100;
-    private float Cur_Hp = 100;
+    public float Cur_Hp = 100;
 
     // 공격 업그레이드 아이템을 먹었을 시 값이 올라간다.
     private float Attack_Upgrade = 0;
@@ -63,6 +63,7 @@ public class Player_Move : MonoBehaviour
         {
             // 보스의 HP가 0 이하 일 때 플레이어와 모든 충돌을 꺼준다.
             this.gameObject.layer = 6;
+            Speed = 0f;
         }
 
         // 점프
@@ -95,6 +96,14 @@ public class Player_Move : MonoBehaviour
 
         // Move 움직이전에 충돌 체크를 해준다. 만약 충돌하면 멈춘다.
         CC.Move(dir * Speed * Time.deltaTime);
+    }
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }
     }
 
     public void Handle_Hp()
@@ -142,7 +151,7 @@ public class Player_Move : MonoBehaviour
         {
             Guided_Missile GM = other.GetComponent<Guided_Missile>();
             Invoke("Handle_Hp", 0.01f);
-            //Cur_Hp -= GM.Attack;
+            Cur_Hp -= GM.Attack;
             Hp_Text.text = "HP : " + Cur_Hp + "/ 100";
             StartCoroutine(Invincibility()); // 무적
             Destroy(other.gameObject);
@@ -161,6 +170,7 @@ public class Player_Move : MonoBehaviour
         // 아이템 01 ( 공격 업그레이드  아이템 ) 과 닿았을 경우
         if (other.CompareTag("Item_01"))
         {
+            UI_Manager.instance.Item(1);
             StartCoroutine("Attack_UpGrade");
             Destroy(other.gameObject);
         }
@@ -168,6 +178,7 @@ public class Player_Move : MonoBehaviour
         // 아이템 02 ( 무적 아이템 ) 과  닿았을 경우
         if (other.CompareTag("Item_02"))
         {
+            UI_Manager.instance.Item(1);
             StartCoroutine("Invincibility_Item");
             Destroy(other.gameObject);
         }
@@ -175,6 +186,7 @@ public class Player_Move : MonoBehaviour
         // 아이템 03 ( HP 회복 아이템 ) 과  닿았을 경우
         if (other.CompareTag("Item_03"))
         {
+            UI_Manager.instance.Item(1);
             if (Cur_Hp == 100)
             {
                 Destroy(other.gameObject);
@@ -198,6 +210,7 @@ public class Player_Move : MonoBehaviour
         // 아이템 04 ( 고통데미지 감소 아이템 ) 과  닿았을 경우
         if (other.CompareTag("Item_04"))
         {
+            UI_Manager.instance.Item(1);
             other.gameObject.tag = "Item_04(false)";
             GameObject.Find("PainDown_Item").SetActive(false);
         }
@@ -205,12 +218,15 @@ public class Player_Move : MonoBehaviour
         // 아이템 05 ( 몬스터들의 이동속도 감소 아이템 ) 과  닿았을 경우
         if (other.CompareTag("Item_05"))
         {
+            UI_Manager.instance.Item(1);
             StartCoroutine("SpeedDown_Itme");
         }
 
         // 아이템 06 ( 이동속도 2배 아이템 ) 과  닿았을 경우
         if (other.CompareTag("Item_06"))
         {
+            UI_Manager.instance.Item(1);
+            MY_Speed = true;
             StartCoroutine("MySpeedUP_Item");
         }
     }

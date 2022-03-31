@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2931945003482798659}
   m_Layer: 7
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: "\uC720\uB3C4\uD0C4"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2931945003482798657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 561, y: 65.7, z: 684.1}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4279054258db2ac48875c4834a3313ac, type: 2}
+  - {fileID: 2100000, guid: 5e106e63e8802d347b558805c9a734ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e72de428bd45b46bb6b9b00c1dfd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet_Target: {fileID: 0}
+  Bullet_Target: {fileID: 5357145744552357997, guid: a949197ea53debd4b97edfe526afb02b, type: 3}
   Bullet_Rigidbody: {fileID: 2931945003482798658}
   Turn_Speed: 5
   FlySpeed: 100
+  Attack: 7

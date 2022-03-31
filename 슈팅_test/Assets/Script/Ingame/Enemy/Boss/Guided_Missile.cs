@@ -17,11 +17,20 @@ public class Guided_Missile : MonoBehaviour
     [Header("총알의 날아가는 속도")]
     public float FlySpeed = 10f;
 
+    [Header("공격력")]
+    public float Attack = 7f;
+
     private Transform Bullet_LocalTrans;
 
     private void Start()
     {
+        Destroy(this.gameObject, 5f);
         Bullet_LocalTrans = GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        Bullet_Target = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void FixedUpdate()

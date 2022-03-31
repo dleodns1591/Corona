@@ -17,11 +17,17 @@ public class Boss : MonoBehaviour
 
     [Header("체력 UI")]
     public Text Hp_Text;
-    private float Max_Hp = 500;
-    public float Cur_Hp = 500;
+    public float Max_Hp = 0f;
+    public float Cur_Hp = 0f;
 
     [Header("총알")]
     public GameObject Bullet_Prefab;
+    public GameObject Guided_Missile_Prefab;
+
+    [Header("총알 방향")]
+    public Transform Direction_01;
+    public Transform Direction_02;
+    public Transform Direction_03;
 
     [Header("몬스터 스킬 (통나무)")]
     public GameObject Long_Circle;
@@ -32,7 +38,7 @@ public class Boss : MonoBehaviour
 
     [Header("보스 충돌 체크")]
     public bool BossHP_Check = true; // 플레이어가 총을 쐈을 때 보스가 안맞도록 하기 위해 bool 변수를 만들어준다.
-    public bool BossMove_Check = true;
+    public bool BossMove_Check = true; // 보스 움직임 시네머신이 시작하는지 안하는지 관리해준다.
     public bool All_Enemy_Check = true; // 스폰 적을 관리해줄 bool 변수를 만들어준다.
 
     [Header("보스 움직임 시네마신")]
@@ -42,6 +48,18 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Stage_01")
+        {
+            Cur_Hp = 500f;
+            Max_Hp = 500f;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Stage_02")
+        {
+            Cur_Hp = 1000f;
+            Max_Hp = 1000f;
+        }
+
         Boss_Check.Stop();
 
         // 초기화 해준다.
@@ -55,12 +73,9 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Stage_01")
-        {
-            Skill_Stop();
-            Boss_Move();
-            Boss_Move_02();
-        }
+        Boss_Move();
+        Boss_Move_02();
+        Skill_Stop();
     }
 
     private void Awake()
@@ -76,7 +91,7 @@ public class Boss : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Bullet bullet = other.GetComponent<Bullet>();
-        Hp_Text.text = "Boss HP : " + Cur_Hp + "/ 500";
+        Hp_Text.text = "Boss HP : " + Cur_Hp + "/ 1000";
 
         if (other.CompareTag("Boss_Wall"))
         {
@@ -94,7 +109,7 @@ public class Boss : MonoBehaviour
             Cur_Hp -= bullet.Attack;
         }
     }
-
+    #region Stage_01 보스 스킬
     private IEnumerator Skill_01()
     {
         #region 보스 스킬(원형 발사)
@@ -132,7 +147,20 @@ public class Boss : MonoBehaviour
     private IEnumerator Skill_02()
     {
         #region 보스 스킬(통나무 굴리기)
-        if (Cur_Hp >= 350)
+        if (SceneManager.GetActiveScene().name == "Stage_01")
+        {
+            while (true)
+            {
+                yield return null;
+                yield return new WaitForSeconds(10f);
+                transform.GetChild(0).gameObject.SetActive(true);
+                yield return new WaitForSeconds(2.5f);
+                transform.GetChild(0).gameObject.SetActive(false);
+                Instantiate(Long_Circle, Logn_Circle_Direction.position, Logn_Circle_Direction.transform.rotation);
+            }
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Stage_02")
         {
             while (true)
             {
@@ -184,40 +212,73 @@ public class Boss : MonoBehaviour
         }
         #endregion
     }
+    #endregion
+
+    private IEnumerator Skill_04()
+    {
+        #region 보스 스킬(유도탄)
+        while (true)
+        {
+            yield return null;
+            yield return new WaitForSeconds(10f);
+            Instantiate(Guided_Missile_Prefab, Direction_01.position, Direction_01.transform.rotation);
+            Instantiate(Guided_Missile_Prefab, Direction_02.position, Direction_02.transform.rotation);
+            Instantiate(Guided_Missile_Prefab, Direction_03.position, Direction_03.transform.rotation);
+        }
+        #endregion
+    }
 
     private void Skill_Stop()
     {
         // 보스의 HP가 0이하 일 때
         if (Cur_Hp <= 0)
         {
-            // Skill_01, Skill_02, Skill_03 코루틴을 중지시킨다.
-            StopCoroutine("Skill_01");
-            StopCoroutine("Skill_02");
-            StopCoroutine("Skill_03");
+            if (SceneManager.GetActiveScene().name == "Stage_01")
+            {
+                // Skill_01, Skill_02, Skill_03 코루틴을 중지시킨다.
+                StopCoroutine("Skill_01");
+                StopCoroutine("Skill_02");
+                StopCoroutine("Skill_03");
+            }
 
+            if (SceneManager.GetActiveScene().name == "Stage_02")
+            {
+                StopCoroutine("Skill_01");
+                StopCoroutine("Skill_02");
+                StopCoroutine("Skill_04");
+            }
             // 보스 오브젝트를 삭제 시킨다.
             Destroy(this.gameObject);
+
         }
     }
 
     private void Skill_Start()
     {
-        if (SceneManager.GetActiveScene().name == "Stage_01")
+        // 만약 몬스터 죽은 점수가 30이상 일 때 
+        if (UI_Manager.instance.EnemyDie_Point >= 1)
         {
-            // 만약 몬스터 죽은 점수가 30이하 일 때 
-            if (UI_Manager.instance.EnemyDie_Point >= 1)
+            if (SceneManager.GetActiveScene().name == "Stage_01")
             {
                 // Skill_01, Skill_02, Skill_03 코루틴을 실행시킨다.
                 StartCoroutine("Skill_01");
                 StartCoroutine("Skill_02");
                 StartCoroutine("Skill_03");
             }
+
+            if (SceneManager.GetActiveScene().name == "Stage_02")
+            {
+                StartCoroutine("Skill_01");
+                StartCoroutine("Skill_02");
+                StartCoroutine("Skill_04");
+            }
+
         }
     }
 
     private void Boss_Move()
     {
-        // 만약 몬스터의 죽은 점수가 30이하 일 때
+        // 만약 몬스터의 죽은 점수가 30이상 일 때
         if (UI_Manager.instance.EnemyDie_Point >= 1)
         {
             // 보스를 지정한 위치로 이동시킨다.
@@ -239,8 +300,16 @@ public class Boss : MonoBehaviour
         if (!BossMove_Check)
         {
             Boss_Check.Stop(); // 보스 움직임 시네마신을 멈춘다.
-            transform.GetChild(6).gameObject.SetActive(true); // 보스 HP바 오브젝트를 SetActive true 한다.
             UI_Canvas.SetActive(true); // UI(스코어, 몬스터죽은 횟수, 플레이어 HP 등 등) 캔버스를 SetActive true 한다,
+            if (SceneManager.GetActiveScene().name == "Stage_01")
+            {
+                transform.GetChild(6).gameObject.SetActive(true); // 보스 HP바 오브젝트를 SetActive true 한다.
+            }
+
+            else if (SceneManager.GetActiveScene().name == "Stage_02")
+            {
+                transform.GetChild(1).gameObject.SetActive(true); // 보스 HP바 오브젝트를 SetActive true 한다.
+            }
         }
     }
 }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // 고통 게이지 관리 스크립트
 public class Pain_Bar : MonoBehaviour
 {
+    public static Pain_Bar instance;
+
     [SerializeField]
     private Slider Pain_Hader;
 
@@ -15,6 +18,16 @@ public class Pain_Bar : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Stage_01")
+        {
+            Cur_Pain = 10f;
+        }
+        
+        if (SceneManager.GetActiveScene().name == "Stage_02")
+        {
+            Cur_Pain = 30f;
+        }
+
         Pain_Hader.value = (float)Cur_Pain / (float)Max_Pain;
     }
 
@@ -25,7 +38,10 @@ public class Pain_Bar : MonoBehaviour
 
     void Awake()
     {
-
+        if (!instance)
+        {
+            instance = this;
+        }
     }
 
     public void Handle_Pain()

@@ -22,4 +22,9 @@ public class Click_Scene : MonoBehaviour
     {
         SceneManager.LoadScene("Stage_01");
     }
+
+    public void Exit_Btn()
+    {
+        Application.Quit();
+    }
 }
