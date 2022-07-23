@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4310120006046947362}
   - component: {fileID: 4310120006046947363}
   - component: {fileID: 4310120006046947360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Red_Cell
   m_TagString: Red_Cell
   m_Icon: {fileID: 0}
@@ -49,7 +49,6 @@ MonoBehaviour:
   Move_Speed: 100
   Move_Direction: {x: 0, y: 0, z: -1}
   HP: 1
-  Pain: 10
 --- !u!135 &4310120006046947363
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -90,7 +89,7 @@ GameObject:
   - component: {fileID: 2881300472337052971}
   - component: {fileID: 1331463933142004810}
   - component: {fileID: 450881837606581753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Red_Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

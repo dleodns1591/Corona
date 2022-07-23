@@ -128,7 +128,7 @@ public class Spawn_Enemy : MonoBehaviour
         //print(Probability_White);
 
         // 30% È®·ü·Î ¹éÇ÷±¸ »ý¼º
-        if (Probability_White <= 30)
+        if (Probability_White <= 100)
         {
             White_Cell();
         }

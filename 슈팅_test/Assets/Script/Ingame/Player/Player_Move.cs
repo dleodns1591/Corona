@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player_Move : MonoBehaviour
 {
@@ -34,26 +35,42 @@ public class Player_Move : MonoBehaviour
     // 보스움직임 시네머신이 돌아가고 있을 때 공격을 맞지 않게 하기 위하여 변수를 만들어준다.
     public bool Player_Boss = true;
 
+    public bool Player_Load = true;
+
     CharacterController CC;
 
     void Start()
     {
+        Player_Load = true;
         Player_Boss = true;
         CC = GetComponent<CharacterController>();
 
-        HP_Hader.value = (float)Cur_Hp / (float)Max_Hp;
+        Handle_Hp();
 
     }
 
 
     void Update()
     {
+        Speed = 50f;
+
+        if (SceneManager.GetActiveScene().name == "Stage_02")
+        {
+            if (Player_Load)
+            {
+                HP_Hader = GameObject.Find("HP_Slider").GetComponent<Slider>();
+                Hp_Text = GameObject.Find("HP_Text").GetComponent<Text>();
+                Cur_Hp = 100;
+                this.gameObject.transform.position = new Vector3(557f, 59f, 67.54f);
+                Player_Load = false;
+            }
+        }
         if (Player_Boss)
         {
             // 보스의 시네마신이 시작하기 전
             this.gameObject.layer = 0;
         }
-        else if(!Player_Boss)
+        else if (!Player_Boss)
         {
             // 보스의 시네마신이 진행되고 있을 때
             this.gameObject.layer = 6;
@@ -100,10 +117,13 @@ public class Player_Move : MonoBehaviour
 
     private void Awake()
     {
-        if (!instance)
+        if (instance != null)
         {
-            instance = this;
+            Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Handle_Hp()
@@ -119,7 +139,7 @@ public class Player_Move : MonoBehaviour
         // Enemy_03 (바이러스) 와 닿았을 경우
         // Enemy_04 (암세포) 와 닿았을 경우
         Enemy_Move EM = other.GetComponent<Enemy_Move>();
-        if (other.CompareTag("Enemy_01") || other.CompareTag("Enemy_02") || other.CompareTag("Enemy_03") || other.CompareTag("Enemy_04"))
+        if (other.CompareTag("Enemy_01") && !Enemy_Invincibility || other.CompareTag("Enemy_02") && !Enemy_Invincibility || other.CompareTag("Enemy_03") && !Enemy_Invincibility || other.CompareTag("Enemy_04") && !Enemy_Invincibility)
         {
             Invoke("Handle_Hp", 0.01f);
             Cur_Hp -= EM.Damage / 2;
@@ -128,7 +148,7 @@ public class Player_Move : MonoBehaviour
         }
 
         // 몬스터 총알 과 닿았을 경우
-        if (other.CompareTag("Enemy_Bullet"))
+        if (other.CompareTag("Enemy_Bullet") && !Enemy_Invincibility)
         {
             Enemy_Bullet EB = other.GetComponent<Enemy_Bullet>();
             Invoke("Handle_Hp", 0.01f);
@@ -138,7 +158,7 @@ public class Player_Move : MonoBehaviour
         }
 
         // 보스의 총알 과 닿았을 경우
-        if (other.CompareTag("Boss_Bullet"))
+        if (other.CompareTag("Boss_Bullet") && !Enemy_Invincibility)
         {
             MoveMent MM = other.GetComponent<MoveMent>();
             Invoke("Handle_Hp", 0.01f);
@@ -147,7 +167,7 @@ public class Player_Move : MonoBehaviour
             StartCoroutine(Invincibility()); // 무적
         }
 
-        if (other.CompareTag("유도탄"))
+        if (other.CompareTag("유도탄") && !Enemy_Invincibility)
         {
             Guided_Missile GM = other.GetComponent<Guided_Missile>();
             Invoke("Handle_Hp", 0.01f);
@@ -158,7 +178,7 @@ public class Player_Move : MonoBehaviour
         }
 
         // 보스의 스킬 과 닿았을 경우
-        if (other.CompareTag("Boss_Skill"))
+        if (other.CompareTag("Boss_Skill") && !Enemy_Invincibility)
         {
             Boss_Skill BS = other.GetComponent<Boss_Skill>();
             Invoke("Handle_Hp", 0.01f);
@@ -179,7 +199,7 @@ public class Player_Move : MonoBehaviour
         if (other.CompareTag("Item_02"))
         {
             UI_Manager.instance.Item(1);
-            StartCoroutine("Invincibility_Item");
+            StartCoroutine(Invincibility_Item());
             Destroy(other.gameObject);
         }
 
@@ -247,10 +267,10 @@ public class Player_Move : MonoBehaviour
     IEnumerator Invincibility()
     {
         // 몬스터와 충돌 될 경우 1.5초 정도의 무적시간을 가지고 있다.
-        this.gameObject.layer = 6;
         Enemy_Invincibility = true;
+        Debug.Log("무적");
         yield return new WaitForSeconds(1.5f);
-        this.gameObject.layer = 0;
+        Debug.Log("끝");
         Enemy_Invincibility = false;
     }
 
@@ -283,13 +303,13 @@ public class Player_Move : MonoBehaviour
     IEnumerator Invincibility_Item()
     {
         // 3초 동안 무적시간을 갖는다.
-        this.gameObject.layer = 6;
         Enemy_Invincibility = true;
+        Debug.Log("무적");
         transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        this.gameObject.layer = 0;
+        Debug.Log("끝");
         Enemy_Invincibility = false;
     }
 

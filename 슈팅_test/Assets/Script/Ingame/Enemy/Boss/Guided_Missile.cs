@@ -40,6 +40,10 @@ public class Guided_Missile : MonoBehaviour
             return;
         }
 
+        //Bullet_Rigidbody.velocity = Bullet_LocalTrans.forward * FlySpeed;
+        //var Bullet_TargetRot = Quaternion.LookRotation(Bullet_Target.position - Bullet_LocalTrans.position);
+        //Bullet_Rigidbody.MoveRotation(Quaternion.RotateTowards(Bullet_LocalTrans.rotation, Bullet_TargetRot, Turn_Speed));
+
         Bullet_Rigidbody.velocity = Bullet_LocalTrans.forward * FlySpeed;
         var Bullet_TargetRot = Quaternion.LookRotation(Bullet_Target.position - Bullet_LocalTrans.position);
         Bullet_Rigidbody.MoveRotation(Quaternion.RotateTowards(Bullet_LocalTrans.rotation, Bullet_TargetRot, Turn_Speed));

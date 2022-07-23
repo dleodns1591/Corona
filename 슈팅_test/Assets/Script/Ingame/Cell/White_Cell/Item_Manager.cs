@@ -37,7 +37,7 @@ public class Item_Manager : MonoBehaviour
             if (RI)
             {
                 RI = false;
-                int Random_Item = Random.Range(1, 7);
+                int Random_Item = Random.Range(2,2);
                 Debug.Log($"{Random_Item}¹ø »ÌÈû");
                 this.gameObject.tag = $"Item_0{Random_Item}";
                 transform.GetChild(Random_Item).gameObject.SetActive(true);

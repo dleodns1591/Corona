@@ -5027,6 +5027,7 @@ RectTransform:
   - {fileID: 1284687747}
   - {fileID: 624074204}
   - {fileID: 843094995}
+  - {fileID: 1759664424}
   - {fileID: 1486217697}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -5060,8 +5061,9 @@ MonoBehaviour:
   EnemyDie_Point: 0
   HP_01: 0
   Pain_01: 0
-  Point_01: 0
   Item_01: 0
+  Point_01: 0
+  Point_02: 0
 --- !u!1 &765073198
 GameObject:
   m_ObjectHideFlags: 0
@@ -9296,13 +9298,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15858af5e86cd045b17a8595b88cce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 50
+  Speed: 0
   Gravity: -9.81
   Jump_Power: 5
   HP_Hader: {fileID: 1399758962}
   Hp_Text: {fileID: 1495641605}
   Cur_Hp: 100
   Player_Boss: 1
+  Player_Load: 1
 --- !u!23 &1399048577
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9527,7 +9530,7 @@ GameObject:
   - component: {fileID: 1409108594}
   - component: {fileID: 1409108593}
   m_Layer: 0
-  m_Name: Stage_01_Score
+  m_Name: Stage_01_Score_Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9546,6 +9549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage01_Point: 0
+  Stage02_Point: 0
+  Stage_AddPoint: 0
 --- !u!4 &1409108594
 Transform:
   m_ObjectHideFlags: 0
@@ -10163,7 +10168,7 @@ RectTransform:
   - {fileID: 1346437225}
   - {fileID: 1601037758}
   m_Father: {fileID: 739701300}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12110,6 +12115,81 @@ Transform:
   m_Father: {fileID: 1399048579}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1759664423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759664424}
+  - component: {fileID: 1759664426}
+  - component: {fileID: 1759664425}
+  m_Layer: 5
+  m_Name: Aim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1759664424
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759664423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 739701300}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1759664425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759664423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c03c72978d15ecb4d91060d3a10d14f0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1759664426
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759664423}
+  m_CullTransparentMesh: 1
 --- !u!1 &1762912253
 GameObject:
   m_ObjectHideFlags: 0
@@ -15696,7 +15776,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 2
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -15749,7 +15829,7 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 2
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -15805,7 +15885,7 @@ ParticleSystem:
     enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -15858,7 +15938,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -21809,7 +21889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523326161351147582}
   m_LocalRotation: {x: -0.16814521, y: 0, z: 0, w: 0.98576224}
-  m_LocalPosition: {x: 557, y: -94.5, z: 553}
+  m_LocalPosition: {x: 557, y: -110, z: 553}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 3651831334265922006}
@@ -25519,7 +25599,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.5875244, y: 0}
   m_SizeDelta: {x: 0.825, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25697,7 +25777,7 @@ MonoBehaviour:
   HP_Slider: {fileID: 6731960151965982065}
   Hp_Text: {fileID: 856198498155854754}
   Max_Hp: 0
-  Cur_Hp: 500
+  Cur_Hp: 1
   Bullet_Prefab: {fileID: 81060248786584591, guid: 5e4c4a1ad5632fa4f8187c0121bb2e18, type: 3}
   Guided_Missile_Prefab: {fileID: 0}
   Direction_01: {fileID: 0}

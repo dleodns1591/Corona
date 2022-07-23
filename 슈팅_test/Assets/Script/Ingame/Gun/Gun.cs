@@ -9,11 +9,6 @@ public class Gun : MonoBehaviour
     private float Time_Left = 0.2f;
     private float Next_Time = 0.0f;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (Time.time > Next_Time)

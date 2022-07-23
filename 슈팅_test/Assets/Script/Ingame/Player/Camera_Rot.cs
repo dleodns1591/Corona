@@ -6,7 +6,7 @@ public class Camera_Rot : MonoBehaviour
 {
     private float rx;
     private float ry;
-    public float Rot_Speed = 200;
+    public float Rot_Speed = 550;
 
     void Start()
     {
@@ -15,6 +15,7 @@ public class Camera_Rot : MonoBehaviour
 
     void Update()
     {
+        Rot_Speed = 550;
         Boss_Die();
 
         // 1. 마우스 입력 값을 이용한다.

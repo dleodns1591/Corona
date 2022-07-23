@@ -91,11 +91,18 @@ public class Boss : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Bullet bullet = other.GetComponent<Bullet>();
-        Hp_Text.text = "Boss HP : " + Cur_Hp + "/ 1000";
+        if (SceneManager.GetActiveScene().name == "Stage_01")
+        {
+            Hp_Text.text = "Boss HP : " + Cur_Hp + "/ 500";
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Stage_02")
+        {
+            Hp_Text.text = "Boss HP : " + Cur_Hp + "/ 1000";
+        }
 
         if (other.CompareTag("Boss_Wall"))
         {
-
             Debug.Log("º®°ú ´êÀ½");
             Speed = 0f;
             //BossHP_Check = false;
@@ -312,4 +319,5 @@ public class Boss : MonoBehaviour
             }
         }
     }
+
 }

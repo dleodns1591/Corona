@@ -1,0 +1,12 @@
+Font: Unipix  Style: Regular
+Point Size: 36   SP/PD Ratio: 11.1%
+
+Characters included: 0/0
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------

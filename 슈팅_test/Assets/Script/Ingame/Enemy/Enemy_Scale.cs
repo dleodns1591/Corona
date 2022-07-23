@@ -12,11 +12,6 @@ public class Enemy_Scale : MonoBehaviour
     [Header("회전 속도")]
     public float Rotate_Speed = 50;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (time <= Up_SizeTime)

@@ -48,7 +48,6 @@ public class UI_Manager : MonoBehaviour
             return;
         }
         instance = this;
-        //DontDestroyOnLoad(gameObject);
     }
 
     public void Score(int Score)
@@ -98,12 +97,12 @@ public class UI_Manager : MonoBehaviour
     {
         if (Boss.instance.Cur_Hp <= 0)
         {
-            transform.GetChild(7).gameObject.SetActive(true);
+            transform.GetChild(8).gameObject.SetActive(true);
             Stage01_Clear_UI();
         }
         else
         {
-            transform.GetChild(7).gameObject.SetActive(false);
+            transform.GetChild(8).gameObject.SetActive(false);
         }
     }
 
@@ -115,7 +114,7 @@ public class UI_Manager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Stage_02")
         {
-            transform.GetChild(8).gameObject.SetActive(true);
+            transform.GetChild(9).gameObject.SetActive(true);
         }
     }
 
